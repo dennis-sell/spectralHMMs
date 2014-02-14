@@ -8,7 +8,7 @@ function [samples] = getobservationsamples(N, len, HMM)
 
 samples = zeros(N,len);
     for i=1:N
-        [seq, states] = hmmgenerate(len, TRANS, EMIS);
+        [seq, states] = hmmgenerate(len, HMM.usedTrans, HMM.usedEmis);
         samples(i,:) = seq;
     end
 
