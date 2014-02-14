@@ -1,6 +1,7 @@
 function [SpectralModel] = computespectralmodel(samples, nObservations, nStates)
-%SPECTRALMETHOD Summary of this function goes here
-%   Detailed explanation goes here
+% Creates the necessary matrices and vectors for easy analysis of
+% observation probability, as explained in HKZ
+
 N = nObservations;
 M = nStates;
 
@@ -26,6 +27,7 @@ P3 = P3 ./ sum(sum(sum(P3)));
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Creates b1, b_inf, and B_x's. Places into a spectral model.
 [U, S, V] = svd(P2);
 U = U(:,1:M);
 
@@ -38,3 +40,4 @@ end
 SpectralModel.b1 = b1;
 SpectralModel.b_inf = b_inf;
 SpectralModel.B = B;
+SpectralModel.nObservations = nObservations;
