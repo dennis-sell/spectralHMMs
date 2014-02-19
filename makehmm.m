@@ -4,7 +4,7 @@ function [HMM] = makehmm(p, trans, emis)
     HMM.emis = emis;
 
     % Done to change the Initial State Distribution
-    % See:
+    %    See:
     % http://www.mathworks.com/help/stats/hidden-markov-models-hmm.html
     HMM.usedTrans   = [0 p; zeros(size(trans,1),1) trans];
     HMM.usedEmis    = [zeros(1, size(emis, 2)); emis];
